@@ -33,17 +33,24 @@ def print_word_freq(filename):
     
     return words
 
+# count words and make new list ???? how do i ensure count matches up with specific word?
+def word_count_list(list_words):
+    number_of_word = []
+    for word in list_words:
+        number_of_word[list_words] += 1
+    else:
+        number_of_word[list_words] = 1
+    return number_of_word
+
 word_list = print_word_freq("seneca_falls.txt")
-# print(word_list) #checking if the above works and it does!
+print(word_list) #checking if the above works and it does!
 
-# defining function to add word to dictionary and count number of same words... i dunno guys
-def count_words(a_list):
-    word_dict = {}
-    for word in a_list:
-        if word:
-            word_dict.update('word', #number of words)
+# defining function to add word to dictionary with word count... i dunno guys
+# def count_words(a_list):
+#     word_dict = {}
+#     for something or other
 
-print(count_words(word_list))
+# print(count_words(word_list))
        
         
 
