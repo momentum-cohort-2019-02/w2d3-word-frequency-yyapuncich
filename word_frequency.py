@@ -31,34 +31,42 @@ def print_word_freq(filename):
         if word != '' and word not in STOP_WORDS:
             words.append(word)
     
-    print(words)
+    return words
 
-print(print_word_freq("seneca_falls.txt"))
+word_list = print_word_freq("seneca_falls.txt")
+# print(word_list) #checking if the above works and it does!
 
-# print(seneca_list_lines) #testing to see if worked and it's ok!
-# GET DICT OF WORD FREQUENCIES AND PRINT THEM OUt
+# defining function to add word to dictionary and count number of same words... i dunno guys
+def count_words(a_list):
+    word_dict = {}
+    for word in a_list:
+        if word:
+            word_dict.update('word', #number of words)
+
+print(count_words(word_list))
+       
+        
+
+
 
 # go through file with for loop and count how many times word is used
 
-# print words and their frequency
-
-# def print_word_freq(file):
-#     """Read in `file` and print out the frequency of words in that file."""
-#     pass
 
 
-if __name__ == "__main__":
-    import argparse
-    from pathlib import Path
 
-    parser = argparse.ArgumentParser(
-        description='Get the word frequency in a text file.')
-    parser.add_argument('file', help='file to read')
-    args = parser.parse_args()
 
-    file = Path(args.file)
-    if file.is_file():
-        print_word_freq(file)
-    else:
-        print(f"{file} does not exist!")
-        exit(1)
+# if __name__ == "__main__":
+#     import argparse
+#     from pathlib import Path
+
+#     parser = argparse.ArgumentParser(
+#         description='Get the word frequency in a text file.')
+#     parser.add_argument('file', help='file to read')
+#     args = parser.parse_args()
+
+#     file = Path(args.file)
+#     if file.is_file():
+#         print_word_freq(file)
+#     else:
+#         print(f"{file} does not exist!")
+#         exit(1)
