@@ -1,10 +1,11 @@
 import string
+import collections
 STOP_WORDS = [
     'a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from', 'has', 'he',
     'i', 'in', 'is', 'it', 'its', 'of', 'on', 'that', 'the', 'to', 'were',
     'will', 'with'
 ]
-# open file and create new string or list with contents
+# this function is used to clean up text. I use it within the function underneath called COMPILE_LIST()
 def normalize_text(text):
     """Takes text and removes punctuation and replaces whitespace with normal spaces- compressing single spaces"""
     text = text.lower()
@@ -16,48 +17,41 @@ def normalize_text(text):
         if char in valid_chars:
             new_text += char
     text = new_text
-    text = text.replace("\n", " ")
-    return text
+    cleaned_text = text.replace("\n", " ")
+    return cleaned_text
 # print(normalize_text("Too  Much loittle !!@@ kddk")) #checking here, it works!
 
-def print_word_freq(filename):
-    """read filename and print our words in file"""
+def compile_list(filename):
+    """read filename and print out words in file"""
     with open(filename) as file:
         text = file.read()
-
-    text = normalize_text(text)
+# the above creates a string with contents of file
+    text = normalize_text(text) 
     words = []
     for word in text.split(" "):
         if word != '' and word not in STOP_WORDS:
             words.append(word)
-    
+# the above creates a list of all the words, without the stop_words
     return words
 
+# assigning variable WORDS that uses above function to complie list of words in seneca_falls.txt
+words = compile_list("seneca_falls.txt")
+# print(compile_list("seneca_falls.txt"))
 # count words and make new list ???? how do i ensure count matches up with specific word?
 def word_count_list(list_words):
-    number_of_word = []
-    for word in list_words:
-        number_of_word[list_words] += 1
-    else:
-        number_of_word[list_words] = 1
+    """Goes through words and creates dictionary containing word and count"""
+    number_of_word = {}
+    # below for loop checks each word in list and will add it to number_of_word dictionary, if already in dictionary will tally additional number and add to value of word
+    for each_word in list_words:
+        if each_word not in number_of_word:
+            number_of_word[each_word] = 1
+        else:
+            number_of_word[each_word] += 1
     return number_of_word
 
-word_list = print_word_freq("seneca_falls.txt")
-print(word_list) #checking if the above works and it does!
-
-# defining function to add word to dictionary with word count... i dunno guys
-# def count_words(a_list):
-#     word_dict = {}
-#     for something or other
-
-# print(count_words(word_list))
-       
-        
-
-
-
-# go through file with for loop and count how many times word is used
-
+# assigning new variable below that uses function to make dictionary of WORD:COUNT as KEY:VALUE, then printing it out the check
+word_count_dict = word_count_list(words)
+print(word_count_dict)
 
 
 
